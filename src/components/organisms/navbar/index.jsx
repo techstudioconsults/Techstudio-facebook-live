@@ -4,10 +4,18 @@ import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 
 import { Icons } from '../../../assets'
 import { Button } from '../../atoms'
+import useAppProvider from '../../../hooks/useAppProvider'
 
 const Navbar = () => {
+  const { handleRegisterModal, registerModal } = useAppProvider()
   return (
-    <nav className='navbar navbar-expand-lg bg-blue fixed-top'>
+    <nav
+      className={
+        registerModal
+          ? `navbar navbar-expand-lg bg-blue`
+          : `navbar navbar-expand-lg bg-blue fixed-top `
+      }
+    >
       <div className='container py-3 d-flex justify-content-between align-items-center'>
         <Link className='navbar-brand' to='/'>
           <div className='d-flex align-items-center gap-2'>
@@ -30,7 +38,13 @@ const Navbar = () => {
           id='navbarNavAltMarkup'
         >
           <div className='navbar-nav d-flex gap-6 justify-content-center align-items-center my-10 my-lg-0'>
-            <Button linkHref='/' linkText='Register' solidBtn navBtn />
+            <Button
+              onClick={handleRegisterModal}
+              linkHref='/'
+              linkText='Register'
+              solidBtn
+              navBtn
+            />
           </div>
         </div>
       </div>

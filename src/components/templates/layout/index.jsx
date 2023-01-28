@@ -1,16 +1,21 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 
-import { Navbar, Footer } from '../../organisms'
+import { Navbar, Footer, RegisterModal } from '../../organisms'
 import styles from './layout.module.scss'
+import useAppProvider from '../../../hooks/useAppProvider'
 
 const Layout = ({ children }) => {
+  const { registerModal } = useAppProvider()
   return (
-    <main className={styles.main}>
-      <Navbar />
-      {children}
-      <Footer />
-    </main>
+    <>
+      {registerModal && <RegisterModal />}
+      <main className={styles.main}>
+        <Navbar />
+        {children}
+        <Footer />
+      </main>
+    </>
   )
 }
 
