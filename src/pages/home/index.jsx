@@ -1,7 +1,12 @@
 import React from 'react'
 
 import { Layout } from '../../components/templates'
-import { Course, CourseOutline, Hero } from '../../components/organisms'
+import {
+  AdBanner,
+  Course,
+  CourseOutline,
+  Hero,
+} from '../../components/organisms'
 import { FACEBOOK_CONTENT } from './content'
 import styles from './home.module.scss'
 
@@ -15,6 +20,7 @@ const HomePage = () => {
       <section className={styles.sectionThree}>
         <CourseOutline content={sectionThree} />
       </section>
+      <AdBanner content={sectionFour} />
     </Layout>
   )
 }
