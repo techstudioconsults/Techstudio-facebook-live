@@ -6,6 +6,7 @@ import {
   Course,
   CourseOutline,
   Hero,
+  ProjectSamples,
 } from '../../components/organisms'
 import { FACEBOOK_CONTENT } from './content'
 import styles from './home.module.scss'
@@ -21,6 +22,7 @@ const HomePage = () => {
         <CourseOutline content={sectionThree} />
       </section>
       <AdBanner content={sectionFour} />
+      <ProjectSamples content={sectionFive} />
     </Layout>
   )
 }
