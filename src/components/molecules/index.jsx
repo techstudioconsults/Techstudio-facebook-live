@@ -1,1 +1,2 @@
-//import molecules here
+//export molecules here
+export { default as CourseCard } from './coursecard/CourseCard'

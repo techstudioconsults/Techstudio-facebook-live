@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Layout } from '../../components/templates'
-import { Hero } from '../../components/organisms'
+import { Course, Hero } from '../../components/organisms'
 import { FACEBOOK_CONTENT } from './content'
 import styles from './home.module.scss'
 
@@ -11,6 +11,7 @@ const HomePage = () => {
   return (
     <Layout>
       <Hero content={heroSection} />
+      <Course content={sectionTwo} />
     </Layout>
   )
 }
