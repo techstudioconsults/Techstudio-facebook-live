@@ -1,12 +1,43 @@
-import React from 'react'
-import { FaEye } from 'react-icons/fa'
+import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
+import { toast } from 'react-toastify'
+import axios from 'axios'
 
 import useAppProvider from '../../../hooks/useAppProvider'
 import styles from './registermodal.module.scss'
 
 const RegisterModal = () => {
   const { handleRegisterModal } = useAppProvider()
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [loading, setLoading] = useState(false)
+  const handleRegister = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      const res = await axios.post(
+        process.env.REACT_APP_BASE_URL + '/facebookAd',
+        {
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+        }
+      )
+      console.log(res)
+      toast.success(`Registration successfully`)
+    } catch (error) {
+      console.log(error)
+      toast.warn('Please, Try again')
+    }
+    setFirstName('')
+    setLastName('')
+    setEmail('')
+    setPhoneNumber('')
+    setLoading(false)
+  }
   return (
     <div className={styles.container}>
       <section className={[styles.signup, `cc-shadow`].join(' ')}>
@@ -20,7 +51,7 @@ const RegisterModal = () => {
           </h4>
           <p className={styles.subTitle}>Create an account with Us</p>
         </div>
-        <form className={[styles.form].join(' ')}>
+        <form onSubmit={handleRegister} className={[styles.form].join(' ')}>
           <div className={styles.row}>
             <div>
               <label htmlFor='firstname' className='form-label'>
@@ -32,6 +63,8 @@ const RegisterModal = () => {
                 className='form-control'
                 aria-describedby='firstnameHelpBlock'
                 placeholder='First Name'
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
             <div>
@@ -44,6 +77,8 @@ const RegisterModal = () => {
                 className='form-control'
                 aria-describedby='lastnameHelpBlock'
                 placeholder='Last Name'
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
               />
             </div>
           </div>
@@ -59,6 +94,8 @@ const RegisterModal = () => {
                 className='form-control'
                 aria-describedby='phoneHelpBlock'
                 placeholder='Phone Number'
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
             <div>
@@ -87,56 +124,15 @@ const RegisterModal = () => {
                 className='form-control'
                 aria-describedby='emailHelpBlock'
                 placeholder='example@example.com'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-            </div>
-
-            <div>
-              <label htmlFor='password' className='form-label'>
-                Password
-              </label>
-              <div className={[styles.password, 'input-group mb-3'].join(' ')}>
-                <input
-                  type='password'
-                  id='password'
-                  className='form-control'
-                  aria-describedby='passwordHelpBlock'
-                  placeholder='Password'
-                />
-                <span
-                  className={['input-group-text', styles.showPassword].join(
-                    ' '
-                  )}
-                  id='passwordHelpBlock'
-                >
-                  <FaEye />
-                </span>
-              </div>
-            </div>
-            <div>
-              <label htmlFor='password' className='form-label'>
-                confirm Password
-              </label>
-              <div className={[styles.password, 'input-group mb-3'].join(' ')}>
-                <input
-                  type='password'
-                  id='confirm-password'
-                  className='form-control'
-                  aria-describedby='passwordHelpBlock'
-                  placeholder='confirm password'
-                />
-                <span
-                  className={['input-group-text', styles.showPassword].join(
-                    ' '
-                  )}
-                  id='passwordHelpBlock'
-                >
-                  <FaEye />
-                </span>
-              </div>
             </div>
           </div>
           <div className={styles.btnContainer}>
-            <button type='submit'>Register</button>
+            <button type='submit'>
+              {loading ? 'Registering...' : 'Register'}
+            </button>
           </div>
         </form>
       </section>

@@ -5,6 +5,7 @@
 
 .container {
   width: 100%;
+  height: 100vh;
   top: 0;
   right: 0;
   bottom: 0;
@@ -18,6 +19,7 @@
   justify-content: center;
 
   height: 100vh;
+  max-height: 100vh;
   overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -26,14 +28,10 @@
     display: none;
   }
 
-  padding: 0 fn.rem(10);
+  padding: fn.rem(20) fn.rem(10);
 
   @include breakpoint-up('sm') {
     padding: 0;
-  }
-
-  @include breakpoint-up('md') {
-    padding: fn.rem(200) 0 fn.rem(30);
   }
 
   .signup {
@@ -41,6 +39,7 @@
     padding: fn.rem(47.33) fn.rem(37.13) fn.rem(48);
     box-shadow: 0 5px 15px #00000033;
     position: relative;
+    margin: auto;
 
     .close {
       position: absolute;
@@ -49,6 +48,10 @@
       cursor: pointer;
       height: fn.rem(24);
       width: fn.rem(24);
+    }
+
+    .header {
+      text-align: center;
     }
   }
 }
