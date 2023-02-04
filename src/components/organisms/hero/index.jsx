@@ -7,9 +7,13 @@ import useAppProvider from '../../../hooks/useAppProvider'
 import style from './hero.module.scss'
 
 const Hero = ({ content }) => {
-  const { handleRegisterModal } = useAppProvider()
+  const { registerModal, handleRegisterModal } = useAppProvider()
   return (
-    <header className={style.hero}>
+    <header
+      className={
+        registerModal ? style.hero : [style.hero, style.margin].join(' ')
+      }
+    >
       <section className={`${style.heroWrapper} container`}>
         <div className={style.heroText}>
           <h1>{content.title}</h1>

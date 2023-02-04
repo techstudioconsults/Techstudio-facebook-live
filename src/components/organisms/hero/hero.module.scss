@@ -3,6 +3,10 @@
 @import '../../../scss/utils/breakpoints';
 @import '../../../scss/utils/mixins';
 
+.margin {
+  margin-top: fn.rem(40);
+}
+
 .hero {
   @include flex_justify;
   color: colors.$light;
@@ -16,16 +20,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
-    padding-top: fn.rem(0);
     height: fn.rem(631);
-    padding-left: fn.rem(10);
-    padding-right: fn.rem(10);
-  }
-
-  @include breakpoint-up('md') {
     padding: fn.rem(120) fn.rem(10) fn.rem(50);
   }
-
+  
   @include breakpoint-up('xxl') {
     height: fn.rem(700);
   }

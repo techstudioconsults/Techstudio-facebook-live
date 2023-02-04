@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import axios from 'axios'
 
 import useAppProvider from '../../../hooks/useAppProvider'
+import { Images } from '../../../assets'
 import styles from './registermodal.module.scss'
 
 const RegisterModal = () => {
@@ -13,6 +14,7 @@ const RegisterModal = () => {
   const [email, setEmail] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
   const handleRegister = async (e) => {
     e.preventDefault()
     setLoading(true)
@@ -27,7 +29,7 @@ const RegisterModal = () => {
         }
       )
       console.log(res)
-      toast.success(`Registration successfully`)
+      setShowSuccessModal(true)
     } catch (error) {
       console.log(error)
       toast.warn('Please, Try again')
@@ -40,102 +42,119 @@ const RegisterModal = () => {
   }
   return (
     <div className={styles.container}>
-      <section className={[styles.signup, `cc-shadow`].join(' ')}>
-        <AiOutlineClose
-          className={styles.close}
-          onClick={handleRegisterModal}
-        />
-        <div className={styles.header}>
-          <h4 className='text-blue fw-bolder mb-3'>
-            One last step, let’s get to know you
-          </h4>
-          <p className={styles.subTitle}>Create an account with Us</p>
+      {showSuccessModal ? (
+        <div className={styles.success}>
+          <AiOutlineClose
+            className={styles.close}
+            onClick={handleRegisterModal}
+          />
+          <div className={styles.successImg}>
+            <img src={Images.success} alt='success' />
+          </div>
+          <h3>Registration Successful!!!</h3>
+          <p>
+            Your details have been received and our Customer Care Representative
+            will contact you shortly.
+          </p>
         </div>
-        <form onSubmit={handleRegister} className={[styles.form].join(' ')}>
-          <div className={styles.row}>
-            <div>
-              <label htmlFor='firstname' className='form-label'>
-                First Name
-              </label>
-              <input
-                type='text'
-                id='firstname'
-                className='form-control'
-                aria-describedby='firstnameHelpBlock'
-                placeholder='First Name'
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor='lastname' className='form-label'>
-                Last Name
-              </label>
-              <input
-                type='text'
-                id='lastname'
-                className='form-control'
-                aria-describedby='lastnameHelpBlock'
-                placeholder='Last Name'
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </div>
+      ) : (
+        <section className={[styles.signup, `cc-shadow`].join(' ')}>
+          <AiOutlineClose
+            className={styles.close}
+            onClick={handleRegisterModal}
+          />
+          <div className={styles.header}>
+            <h4 className='text-blue fw-bolder mb-3'>
+              One last step, let’s get to know you
+            </h4>
+            <p className={styles.subTitle}>Create an account with Us</p>
           </div>
+          <form onSubmit={handleRegister} className={[styles.form].join(' ')}>
+            <div className={styles.row}>
+              <div>
+                <label htmlFor='firstname' className='form-label'>
+                  First Name
+                </label>
+                <input
+                  type='text'
+                  id='firstname'
+                  className='form-control'
+                  aria-describedby='firstnameHelpBlock'
+                  placeholder='First Name'
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor='lastname' className='form-label'>
+                  Last Name
+                </label>
+                <input
+                  type='text'
+                  id='lastname'
+                  className='form-control'
+                  aria-describedby='lastnameHelpBlock'
+                  placeholder='Last Name'
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </div>
+            </div>
 
-          <div className={styles.row}>
-            <div className={styles.phoneNumber}>
-              <label htmlFor='phone' className='form-label'>
-                Your Phone Number
-              </label>
-              <input
-                type='number'
-                id='phone'
-                className='form-control'
-                aria-describedby='phoneHelpBlock'
-                placeholder='Phone Number'
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
+            <div className={styles.row}>
+              <div className={styles.phoneNumber}>
+                <label htmlFor='phone' className='form-label'>
+                  Your Phone Number
+                </label>
+                <input
+                  type='number'
+                  id='phone'
+                  className='form-control'
+                  aria-describedby='phoneHelpBlock'
+                  placeholder='Phone Number'
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor='subject' className='form-label'>
+                  Course
+                </label>
+                <input
+                  type='text'
+                  id='time-schedule'
+                  className='form-control'
+                  aria-describedby='lastnameHelpBlock'
+                  value={'Facebook Live Class'}
+                  readOnly
+                />
+              </div>
             </div>
-            <div>
-              <label htmlFor='subject' className='form-label'>
-                Course
-              </label>
-              <input
-                type='text'
-                id='time-schedule'
-                className='form-control'
-                aria-describedby='lastnameHelpBlock'
-                value={'Facebook Live Class'}
-                readOnly
-              />
-            </div>
-          </div>
 
-          <div className={styles.secondRow}>
-            <div className={styles.email}>
-              <label htmlFor='email' className='form-label'>
-                Email Address
-              </label>
-              <input
-                type='email'
-                id='email'
-                className='form-control'
-                aria-describedby='emailHelpBlock'
-                placeholder='example@example.com'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+            <div className={styles.secondRow}>
+              <div className={styles.email}>
+                <label htmlFor='email' className='form-label'>
+                  Email Address
+                </label>
+                <input
+                  type='email'
+                  id='email'
+                  className='form-control'
+                  aria-describedby='emailHelpBlock'
+                  placeholder='example@example.com'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
             </div>
-          </div>
-          <div className={styles.btnContainer}>
-            <button type='submit'>
-              {loading ? 'Registering...' : 'Register'}
-            </button>
-          </div>
-        </form>
-      </section>
+            <div className={styles.btnContainer}>
+              <button type='submit'>
+                {loading ? 'Registering...' : 'Register'}
+              </button>
+            </div>
+          </form>
+        </section>
+      )}
     </div>
   )
 }

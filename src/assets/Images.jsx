@@ -5,6 +5,7 @@ import numberThree from './images/numberThree.webp'
 import img6 from './images/img6.svg'
 import sample1 from './images/sample (2).png'
 import sample2 from './images/sample (1).png'
+import success from './images/success.png'
 
 const Images = {
   facebookImg,
@@ -14,6 +15,7 @@ const Images = {
   img6,
   sample1,
   sample2,
+  success,
 }
 
 export default Images

@@ -12,7 +12,7 @@
   left: 0;
   position: fixed;
   background: rgba(0, 0, 0, 0.7);
-  z-index: 99;
+  z-index: 999;
 
   display: flex;
   align-items: center;
@@ -23,15 +23,75 @@
   overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  padding: fn.rem(20) fn.rem(10);
 
   &::-webkit-scrollbar {
     display: none;
   }
 
-  padding: fn.rem(20) fn.rem(10);
-
   @include breakpoint-up('sm') {
     padding: 0;
+  }
+
+  .close {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    cursor: pointer;
+    height: fn.rem(24);
+    width: fn.rem(24);
+  }
+
+  .success {
+    background: #ffffff;
+    padding: fn.rem(47.33) fn.rem(37.13) fn.rem(122);
+    box-shadow: 0 5px 15px #00000033;
+    width: 98%;
+    position: relative;
+    padding: fn.rem(47.33) fn.rem(10) fn.rem(122);
+
+    @include flex_column;
+    @include flex_centered;
+
+    @include breakpoint-up('sm') {
+      width: 80%;
+      padding: fn.rem(47.33) fn.rem(20) fn.rem(122);
+    }
+
+    @include breakpoint-up('md') {
+      width: 60%;
+      padding: fn.rem(47.33) fn.rem(37.13) fn.rem(122);
+    }
+
+    @include breakpoint-up('lg') {
+      width: 40%;
+    }
+
+    .successImg {
+      width: fn.rem(208);
+      height: fn.rem(210.17);
+    }
+
+    h3 {
+      all: unset;
+      margin-top: fn.rem(46);
+      margin-bottom: fn.rem(13);
+      font-weight: 700;
+      color: colors.$deep-blue;
+      font-size: fn.rem(24);
+
+      width: 100%;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      width: 100%;
+      font-size: fn.rem(16);
+      font-weight: 400;
+      line-height: fn.rem(28);
+      color: #000000;
+    }
   }
 
   .signup {
@@ -40,15 +100,6 @@
     box-shadow: 0 5px 15px #00000033;
     position: relative;
     margin: auto;
-
-    .close {
-      position: absolute;
-      top: 2%;
-      right: 5%;
-      cursor: pointer;
-      height: fn.rem(24);
-      width: fn.rem(24);
-    }
 
     .header {
       text-align: center;
@@ -71,6 +122,12 @@
       color: lightgray;
       font-size: fn.rem(14);
     }
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   label {
