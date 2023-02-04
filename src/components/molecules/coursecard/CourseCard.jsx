@@ -7,6 +7,12 @@ const CourseCard = ({ card }) => {
       <div className='imgContainer mb-7'>
         <img src={card.img} alt='number' />
       </div>
+      <h6
+        style={{ fontWeight: 600, color: '#292929', fontSize: '18px' }}
+        className='mb-3'
+      >
+        {card.title}
+      </h6>
       <p className='card-text'>{card.text}</p>
     </div>
   )
