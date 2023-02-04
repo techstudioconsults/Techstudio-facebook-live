@@ -12,7 +12,7 @@
   color: colors.$light;
   align-items: flex-start;
   background: colors.$deep-blue;
-  padding: fn.rem(120) 0;
+  padding: fn.rem(60) 0;
 
 
   @include breakpoint-up('md') {

@@ -16,9 +16,11 @@ const ProjectSamples = ({ content }) => {
           </div>
           <div className={styles.sectionImgs_main}>
             <img src={content.sample1} alt='alt2' />
+            <span>Website Landing Page</span>
           </div>
           <div className={styles.sectionImgs_main}>
             <img src={content.sample2} alt='alt3' />
+            <span>Form Creation</span>
           </div>
         </div>
       </section>

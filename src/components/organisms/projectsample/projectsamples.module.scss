@@ -54,6 +54,26 @@
 
   .sectionImgs_main {
     max-width: 100%;
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.25);
+    
+    border-radius: fn.rem(10);
+    position: relative;
+
+    span {
+      color: colors.$light;
+      font-size: fn.rem(21);
+      font-weight: 400;
+      background: #1F2666E0;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      border-bottom-left-radius: fn.rem(10);
+      border-bottom-right-radius: fn.rem(10);
+      height: fn.rem(60);
+      @include flex_centered;
+    }
 
     img {
       width: 100%;
