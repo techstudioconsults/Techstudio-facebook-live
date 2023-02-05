@@ -27,12 +27,16 @@ jobs:
       #   run: npm test
 
   deploy:
+    needs: build
+
     runs-on: ubuntu-latest
-    needs: [build]
+
     steps:
+      - name: checkout files
       - uses: actions/checkout@v2
 
       - name: Install doctl
       - uses: digitalocean/action-doctl@v2
+      
       with:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
