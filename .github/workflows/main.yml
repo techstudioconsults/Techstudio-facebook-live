@@ -23,7 +23,6 @@ jobs:
         cache: 'yarn'
 
     - name: Install dependencies
-      if: steps.yarn-cache.outputs.cache-hit != 'true'
       run: npm install yarn
            yarn install
            yarn build
