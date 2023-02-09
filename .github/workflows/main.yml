@@ -30,13 +30,21 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
       
-      #install applicaion dependencies
-      - name: Install dependencies
-        run: |
-          yarn install
-      # build and test the app
-      - name: build
-        run: |
-          yarn build
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
+
+      - name: Build production bundle
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build:prod # will run `yarn build:prod` command
+      # install applicaion dependencies
+      # - name: Install dependencies
+      #   run: |
+      #     npm install
+      # # build and test the app
+      # - name: build
+      #   run: |
+      #     npm run build
