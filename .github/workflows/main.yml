@@ -28,5 +28,5 @@ jobs:
           #  pm2 start 2
           #  pm2 save
           #  sudo service nginx restart 
-    - run: npm run build --if-present
+    - run: npm run build
     #- run: npm test
