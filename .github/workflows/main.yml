@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Facebook-Live CI
 
 on:
   push:
@@ -11,9 +11,9 @@ jobs:
 
     runs-on: self-hosted
 
-    # strategy:
-    #   matrix:
-    #     node-version: [14.x]
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -28,5 +28,5 @@ jobs:
           #  pm2 start 2
           #  pm2 save
           #  sudo service nginx restart 
-    - run: npm run build
+    - run: npm run build 
     #- run: npm test
