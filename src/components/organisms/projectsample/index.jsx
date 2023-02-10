@@ -16,11 +16,23 @@ const ProjectSamples = ({ content }) => {
           </div>
           <div className={styles.sectionImgs_main}>
             <img src={content.sample1} alt='alt2' />
-            <span>Website Landing Page</span>
+            <a
+              target='_blank'
+              rel='noreferrer'
+              href='https://www.figma.com/proto/ygzRLfgIPUo8eMtjOrL41X/Postit-Landing-Page?page-id=0%3A1&node-id=0%3A3&viewport=389%2C427%2C0.19&scaling=scale-down-width&starting-point-node-id=0%3A3'
+            >
+              Website Landing Page
+            </a>
           </div>
           <div className={styles.sectionImgs_main}>
             <img src={content.sample2} alt='alt3' />
-            <span>Form Creation</span>
+            <a
+              target='_blank'
+              rel='noreferrer'
+              href='https://www.figma.com/proto/ygzRLfgIPUo8eMtjOrL41X/Postit-Landing-Page?page-id=0%3A1&node-id=0%3A3&viewport=389%2C427%2C0.19&scaling=scale-down-width&starting-point-node-id=0%3A3'
+            >
+              Form Creation
+            </a>
           </div>
         </div>
       </section>
