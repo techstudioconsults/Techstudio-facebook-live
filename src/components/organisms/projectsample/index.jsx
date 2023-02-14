@@ -29,7 +29,7 @@ const ProjectSamples = ({ content }) => {
             <a
               target='_blank'
               rel='noreferrer'
-              href='https://www.figma.com/proto/ygzRLfgIPUo8eMtjOrL41X/Postit-Landing-Page?page-id=0%3A1&node-id=0%3A3&viewport=389%2C427%2C0.19&scaling=scale-down-width&starting-point-node-id=0%3A3'
+              href='https://www.figma.com/proto/ygzRLfgIPUo8eMtjOrL41X/Postit-Landing-Page?page-id=128%3A2&node-id=128%3A7&viewport=373%2C920%2C0.44&scaling=scale-down-width'
             >
               Form Creation
             </a>
