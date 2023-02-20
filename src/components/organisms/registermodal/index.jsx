@@ -12,7 +12,10 @@ const RegisterModal = () => {
   const { handleRegisterModal } = useAppProvider()
   const [loading, setLoading] = useState(false)
   const [showSuccessModal, setShowSuccessModal] = useState(false)
-  const [state, dispatch] = useReducer(formReducers, initialFormState)
+  const [{ firstName, lastName, email, phoneNumber }, dispatch] = useReducer(
+    formReducers,
+    initialFormState
+  )
 
   const handleFormChange = (e) => {
     dispatch({
@@ -29,10 +32,10 @@ const RegisterModal = () => {
       const res = await axios.post(
         'https://api.techstudio.academy/api/facebookAd',
         {
-          firstName: state.firstName,
-          lastName: state.lastName,
-          email: state.email,
-          phoneNumber: state.phoneNumber,
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
         }
       )
       console.log(res)
@@ -85,7 +88,7 @@ const RegisterModal = () => {
                   className='form-control'
                   aria-describedby='firstnameHelpBlock'
                   placeholder='First Name'
-                  value={state.firstName}
+                  value={firstName}
                   onChange={(e) => handleFormChange(e)}
                 />
               </div>
@@ -100,7 +103,7 @@ const RegisterModal = () => {
                   className='form-control'
                   aria-describedby='lastnameHelpBlock'
                   placeholder='Last Name'
-                  value={state.lastName}
+                  value={lastName}
                   onChange={(e) => handleFormChange(e)}
                 />
               </div>
@@ -118,7 +121,7 @@ const RegisterModal = () => {
                   className='form-control'
                   aria-describedby='phoneHelpBlock'
                   placeholder='Phone Number'
-                  value={state.phoneNumber}
+                  value={phoneNumber}
                   onChange={(e) => handleFormChange(e)}
                 />
               </div>
@@ -149,7 +152,7 @@ const RegisterModal = () => {
                   className='form-control'
                   aria-describedby='emailHelpBlock'
                   placeholder='example@example.com'
-                  value={state.email}
+                  value={email}
                   onChange={(e) => handleFormChange(e)}
                 />
               </div>
