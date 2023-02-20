@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+
+import { useGetScreenSize } from '../../../hooks/useMediaQuery'
 import style from './stepper.module.scss'
 const ShortStepper = ({ lists, isCourses }) => {
-  const [isMobile, setIsMobile] = useState(false)
+  const { smallScreen } = useGetScreenSize()
 
-  const handleResize = () => {
-    if (window.innerWidth < 998) {
-      setIsMobile(true)
-    } else {
-      setIsMobile(false)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize)
-  })
   const listsDisplay = lists.map((list) => {
     return (
       <div
@@ -36,7 +27,7 @@ const ShortStepper = ({ lists, isCourses }) => {
         >
           <h4 className={style.socialTitle}>
             {/* IF length of string is greater than 2, it will display intro to web */}
-            {!isMobile && list.title.split(' ').length > 2 ? (
+            {!smallScreen && list.title.split(' ').length > 2 ? (
               <>
                 INTRO TO WEB
                 <br />
