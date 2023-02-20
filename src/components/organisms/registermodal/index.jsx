@@ -1,31 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 
 import useAppProvider from '../../../hooks/useAppProvider'
+import { formReducers, initialFormState } from './reducers/formReducer'
 import { Images } from '../../../assets'
 import styles from './registermodal.module.scss'
 
 const RegisterModal = () => {
   const { handleRegisterModal } = useAppProvider()
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
   const [loading, setLoading] = useState(false)
   const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [state, dispatch] = useReducer(formReducers, initialFormState)
+
+  const handleFormChange = (e) => {
+    dispatch({
+      type: 'HANDLE_INPUT_TEXT',
+      field: e.target.name,
+      payload: e.target.value,
+    })
+  }
+
   const handleRegister = async (e) => {
     e.preventDefault()
     setLoading(true)
     try {
       const res = await axios.post(
-        process.env.REACT_APP_BASE_URL + '/facebookAd',
+        'https://api.techstudio.academy/api/facebookAd',
         {
-          firstName,
-          lastName,
-          email,
-          phoneNumber,
+          firstName: state.firstName,
+          lastName: state.lastName,
+          email: state.email,
+          phoneNumber: state.phoneNumber,
         }
       )
       console.log(res)
@@ -34,10 +41,6 @@ const RegisterModal = () => {
       console.log(error)
       toast.warn('Please, Try again')
     }
-    setFirstName('')
-    setLastName('')
-    setEmail('')
-    setPhoneNumber('')
     setLoading(false)
   }
   return (
@@ -78,11 +81,12 @@ const RegisterModal = () => {
                 <input
                   type='text'
                   id='firstname'
+                  name='firstName'
                   className='form-control'
                   aria-describedby='firstnameHelpBlock'
                   placeholder='First Name'
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  value={state.firstName}
+                  onChange={(e) => handleFormChange(e)}
                 />
               </div>
               <div>
@@ -92,11 +96,12 @@ const RegisterModal = () => {
                 <input
                   type='text'
                   id='lastname'
+                  name='lastName'
                   className='form-control'
                   aria-describedby='lastnameHelpBlock'
                   placeholder='Last Name'
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
+                  value={state.lastName}
+                  onChange={(e) => handleFormChange(e)}
                 />
               </div>
             </div>
@@ -109,11 +114,12 @@ const RegisterModal = () => {
                 <input
                   type='number'
                   id='phone'
+                  name='phoneNumber'
                   className='form-control'
                   aria-describedby='phoneHelpBlock'
                   placeholder='Phone Number'
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  value={state.phoneNumber}
+                  onChange={(e) => handleFormChange(e)}
                 />
               </div>
               <div>
@@ -139,11 +145,12 @@ const RegisterModal = () => {
                 <input
                   type='email'
                   id='email'
+                  name='email'
                   className='form-control'
                   aria-describedby='emailHelpBlock'
                   placeholder='example@example.com'
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={state.email}
+                  onChange={(e) => handleFormChange(e)}
                 />
               </div>
             </div>
