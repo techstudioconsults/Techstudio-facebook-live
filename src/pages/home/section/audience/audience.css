@@ -1,0 +1,101 @@
+/* Improved CSS structure and added comments */
+
+.audience-section {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-top: 8.8rem;
+  margin-bottom: 3.09rem;
+}
+
+.audience-section h2 {
+  margin-bottom: 2rem;
+}
+
+.audience-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* Added gap for spacing between cards */
+}
+
+.audience-card {
+  text-align: center;
+  margin-bottom: 3.31rem;
+}
+
+.audience-card img {
+  display: block; /* Corrected display property for images */
+  margin: 0 auto;
+}
+
+.audience-card h3 {
+  color: #1f2666;
+  font-size: 1.3125rem;
+  font-weight: 700;
+  margin-bottom: 1.12rem;
+  margin-block: 1.5rem;
+}
+
+.audience-card p {
+  font-size: 1rem;
+  text-align: center;
+  margin-right: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .audience_section h2 {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-bottom: 3.09rem;
+}
+
+.audience {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audience img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 3.31rem;
+}
+
+.audience h3 {
+  text-align: center;
+  color: #1f2666;
+  text-align: center;
+  /* font-family: Open Sans; 
+  font-size: 1.3125rem;
+  font-weight: 700;
+  margin-bottom: 1.12rem;
+}
+
+.audience p {
+  text-align: center;
+  margin-right: 1.5rem;
+} */
