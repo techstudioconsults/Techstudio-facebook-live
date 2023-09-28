@@ -15,7 +15,12 @@ const CourseBanner = () => {
       mt={{ lg: `4.19rem` }}
     >
       <Flex>
-        <Text>Enrolment Details</Text>
+        <Text
+         fontSize={{ lg: `.78175rem` }}
+         fontWeight={700}
+         lineHeight={{ lg: `1.59606rem` }}
+         letterSpacing={{ lg: `.0065rem` }}
+        >Enrolment Details</Text>
       </Flex>
       <Flex justify={`space-between`} align={`center`}>
         <Box>

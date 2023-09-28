@@ -62,7 +62,7 @@ const HeroSection = () => {
         <div className="form-control">
           <form onSubmit={handleSubmit(handleSubmitForm)}>
             <p>
-              Register to learn more about the program pricing and curriculum
+              Register to learn more about the program<br/> pricing and curriculum
             </p>
             <div className="form-user">
             
